@@ -10,3 +10,5 @@ bookclub-comp_genom.html
 bookclub-comp_genom.knit.md
 bookclub-comp_genom_files
 libs
+*.html
+*.knit.md
