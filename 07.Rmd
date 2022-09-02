@@ -1,4 +1,4 @@
-# Introduction to Genomics
+# Quality Check, Processing and Alignment of High-throughput Sequencing Reads
 
 **Learning objectives:**
 

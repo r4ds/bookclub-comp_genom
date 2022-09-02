@@ -1,4 +1,4 @@
-# Introduction to Genomics
+# Predictive Modeling with Supervised Machine Learning
 
 **Learning objectives:**
 

@@ -1,4 +1,4 @@
-# Introduction to Genomics
+# Operations on Genomic Intervals and Genome Arithmetic
 
 **Learning objectives:**
 

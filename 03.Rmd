@@ -1,4 +1,4 @@
-# Introduction to Genomics
+# Statistics for Genomics
 
 **Learning objectives:**
 
