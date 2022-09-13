@@ -14,7 +14,7 @@ As we read, we are producing [notes about the book](https://r4ds.io/comp_genom).
 
 If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-comp_genom](https://rfordatascience.slack.com/archives/C040F26TNR5) channel on Slack)!
 
-- [Cohort 1](SIGNUPSHEETURL) (started STARTDATE): [BOOKDAYS, BOOKTIMECST CST/CDT](TIMEANDDATEURL) | [meeting videos](https://youtube.com/playlist?list=PL3x6DOfs2NGjAvuW2kC0kKP_oCWK2omFt)
+- [Cohort 1](https://docs.google.com/spreadsheets/d/1j9L3XPUQvkHJaOzYuGFBd6xSmLOCCMGhEmkj1JOyMoY/edit?usp=sharing) (started 2022-10-07): [Fridays, 9:00 CST/CDT](https://www.timeanddate.com/worldclock/converter.html?iso=20221007T140000&p1=24&p2=1440) | [meeting videos](https://youtube.com/playlist?list=PL3x6DOfs2NGjAvuW2kC0kKP_oCWK2omFt)
 
 <hr>
 
