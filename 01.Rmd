@@ -1,14 +1,17 @@
 # Introduction to Genomics
 
-**Learning objectives:**
+**Chapter Objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
-- AIM TO COMPLETE THE SENTENCE "AFTER READING THIS CHAPTER, YOU WILL BE ABLE TO..."
+-   Describe what makes up a gene and genome
+-   Understand how genes and genomes are regulated
+-   Differentiate between the different types of genome mutations
+-   List the general steps required of high-throughput sequencing
+-   Access genome browsers and data repositories of published sequencing data
 
-## SLIDE 1
+## Genes, Genomes, and Genomics
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+DNA: the building blocks of life
+![The four nucleotides of DNA. source: sciencenotes.org](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/Nucleotides-in-DNA.jpg)
 
 ## Meeting Videos
 
