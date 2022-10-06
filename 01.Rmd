@@ -1,3 +1,9 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # Introduction to Genomics
 
 **Chapter Objectives:**
@@ -6,12 +12,87 @@
 -   Understand how genes and genomes are regulated
 -   Differentiate between the different types of genome mutations
 -   List the general steps required of high-throughput sequencing
--   Access genome browsers and data repositories of published sequencing data
 
 ## Genes, Genomes, and Genomics
 
-DNA: the building blocks of life
-![The four nucleotides of DNA. source: sciencenotes.org](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/Nucleotides-in-DNA.jpg)
+DNA: the building blocks of life. ![The four nucleotides of DNA. Source:
+https://sciencenotes.org/wp-content/uploads/2020/11/Nucleotides-in-DNA.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/Nucleotides-in-DNA.jpg)
+
+Gene: A unit of nucleotides that when transcribed, create a functional
+RNA sequence.
+
+RNA: intermediate messenger; different types! ![RNA transcribed from
+DNA. Source:
+http://biochemreview.weebly.com/uploads/1/0/4/0/10409756/5300621_orig.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/DNARNA.jpg)
+
+Protein: macromolecules consisting of amino acids that are translated
+from an RNA sequence. ![RNA to Protein. Source:
+http://www.infohow.org/wp-content/uploads/2012/11/DNA.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/translation_central_dogma.jpg)
+
+Genome: the sum of all genes; the instructions of life. ![The Human
+Genome. Source:
+http://www.infohow.org/wp-content/uploads/2012/11/The-Human-Genome.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/The-Human-Genome.jpg)
+
+Genomics: The study of genomes (structure, function, sequences)
+
+## Gene regulation
+
+The process by which genes are controlled. When they are turned on or
+off, how much to make. Often has a cascading effect.
+
+### Transcriptional regulation
+
+Control output of transcripts *before* transcription occurs.
+
+Transcription factors ![Transcription factors. Source:
+https://www.discoveryandinnovation.com/BIOL202/notes/images/overview.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/transcription_factors.jpg)
+Epigenetic (histone) modifications ![Histone modifications. Source:
+https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/1087/2016/12/12233132/Figure_16_03_03.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/histones.jpg)
+
+### Post-transcriptional regulation
+
+Control what happens to transcripts *after* they are made.
+
+Splicing ![mRNA Splicing. Source:
+https://www.thelancet.com/cms/attachment/4dc4ebd6-928c-461e-8d88-77670862487a/gr2_lrg.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/splicing.jpg)
+
+non-coding RNAs (ncRNAs) ![ncRNA. Source:
+http://chenyuan.date/images/ncRNA_1.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/ncRNA_1.jpg)
+
+## Genetic mutations
+
+Gene-level mutations ![Gene mutations. Source:
+https://www.parentprojectmd.org/wp-content/uploads/2018/01/AboutDuchenne_MutationTypes.png](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/gene_mutations.jpg)
+
+Chromosomal-level mutations ![Chromosome mutations. Source:
+https://www.thoughtco.com/thmb/VlZOfDfOEtxaKL_1KD_VWzi3HeU=/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/chromosome_errors-dd8b305ed287487aac41f821554b686d.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/chromosome_errors.jpg)
+
+## Sequencing
+![Types of analyses possible from sequencing data. Source:  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4266812/figure/f0025/](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/Utility-of-high-throughput-sequencing.jpg)
+
+## Resources
+
+-   General knowledge
+    -   [Kahn
+        Academy](https://www.khanacademy.org/science/ap-biology/gene-expression-and-regulation)
+
+    -   [Genome.gov](https://www.genome.gov/about-genomics/fact-sheets/A-Brief-Guide-to-Genomics)
+-   NGS Sequencing
+    -   Sequencing by Synthesis (Illumina)
+
+        -   [Intro to Illumina
+            Seq](https://www.youtube.com/watch?v=CZeN-IgjYCo)
+
+        -   [Illumina Official
+            Video](https://www.youtube.com/watch?v=fCd6B5HRaZ8)
+
+    -   Nanopore (Oxford Nanopore Technologies)
+
+        -    [Nanopore DNA
+            Sequencing](https://www.youtube.com/watch?v=E9-Rm5AoZGw)
+
+        -   [ONT Official
+            Video](https://www.youtube.com/watch?v=sv9fFeSd3kE)
 
 ## Meeting Videos
 
@@ -20,9 +101,13 @@ DNA: the building blocks of life
 `r knitr::include_url("https://www.youtube.com/embed/URL")`
 
 <details>
-<summary> Meeting chat log </summary>
 
-```
-LOG
-```
+<summary>
+
+Meeting chat log
+
+</summary>
+
+    LOG
+
 </details>
