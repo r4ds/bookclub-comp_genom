@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Introduction to Genomics
 
 **Chapter Objectives:**
@@ -16,22 +10,22 @@ editor_options:
 ## Genes, Genomes, and Genomics
 
 DNA: the building blocks of life. ![The four nucleotides of DNA. Source:
-https://sciencenotes.org/wp-content/uploads/2020/11/Nucleotides-in-DNA.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/Nucleotides-in-DNA.jpg)
+https://sciencenotes.org/wp-content/uploads/2020/11/Nucleotides-in-DNA.jpg](images/Nucleotides-in-DNA.jpg)
 
 Gene: A unit of nucleotides that when transcribed, create a functional
 RNA sequence.
 
 RNA: intermediate messenger; different types! ![RNA transcribed from
 DNA. Source:
-http://biochemreview.weebly.com/uploads/1/0/4/0/10409756/5300621_orig.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/DNARNA.jpg)
+http://biochemreview.weebly.com/uploads/1/0/4/0/10409756/5300621_orig.jpg](images/DNARNA.jpg)
 
 Protein: macromolecules consisting of amino acids that are translated
 from an RNA sequence. ![RNA to Protein. Source:
-http://www.infohow.org/wp-content/uploads/2012/11/DNA.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/translation_central_dogma.jpg)
+http://www.infohow.org/wp-content/uploads/2012/11/DNA.jpg](images/translation_central_dogma.jpg)
 
 Genome: the sum of all genes; the instructions of life. ![The Human
 Genome. Source:
-http://www.infohow.org/wp-content/uploads/2012/11/The-Human-Genome.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/The-Human-Genome.jpg)
+http://www.infohow.org/wp-content/uploads/2012/11/The-Human-Genome.jpg](images/The-Human-Genome.jpg)
 
 Genomics: The study of genomes (structure, function, sequences)
 
@@ -45,30 +39,30 @@ off, how much to make. Often has a cascading effect.
 Control output of transcripts *before* transcription occurs.
 
 Transcription factors ![Transcription factors. Source:
-https://www.discoveryandinnovation.com/BIOL202/notes/images/overview.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/transcription_factors.jpg)
+https://www.discoveryandinnovation.com/BIOL202/notes/images/overview.jpg](images/transcription_factors.jpg)
 Epigenetic (histone) modifications ![Histone modifications. Source:
-https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/1087/2016/12/12233132/Figure_16_03_03.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/histones.jpg)
+https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/1087/2016/12/12233132/Figure_16_03_03.jpg](images/histones.jpg)
 
 ### Post-transcriptional regulation
 
 Control what happens to transcripts *after* they are made.
 
 Splicing ![mRNA Splicing. Source:
-https://www.thelancet.com/cms/attachment/4dc4ebd6-928c-461e-8d88-77670862487a/gr2_lrg.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/splicing.jpg)
+https://www.thelancet.com/cms/attachment/4dc4ebd6-928c-461e-8d88-77670862487a/gr2_lrg.jpg](images/splicing.jpg)
 
 non-coding RNAs (ncRNAs) ![ncRNA. Source:
-http://chenyuan.date/images/ncRNA_1.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/ncRNA_1.jpg)
+http://chenyuan.date/images/ncRNA_1.jpg](images/ncRNA_1.jpg)
 
 ## Genetic mutations
 
 Gene-level mutations ![Gene mutations. Source:
-https://www.parentprojectmd.org/wp-content/uploads/2018/01/AboutDuchenne_MutationTypes.png](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/gene_mutations.jpg)
+https://www.parentprojectmd.org/wp-content/uploads/2018/01/AboutDuchenne_MutationTypes.png](images/gene_mutations.jpg)
 
 Chromosomal-level mutations ![Chromosome mutations. Source:
-https://www.thoughtco.com/thmb/VlZOfDfOEtxaKL_1KD_VWzi3HeU=/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/chromosome_errors-dd8b305ed287487aac41f821554b686d.jpg](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/chromosome_errors.jpg)
+https://www.thoughtco.com/thmb/VlZOfDfOEtxaKL_1KD_VWzi3HeU=/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/chromosome_errors-dd8b305ed287487aac41f821554b686d.jpg](images/chromosome_errors.jpg)
 
 ## Sequencing
-![Types of analyses possible from sequencing data. Source:  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4266812/figure/f0025/](C:/Users/arsmithe/Dropbox/PC/Desktop/bookclub-comp_genom/01_images/Utility-of-high-throughput-sequencing.jpg)
+![Types of analyses possible from sequencing data. Source:  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4266812/figure/f0025/](images/Utility-of-high-throughput-sequencing.jpg)
 
 ## Resources
 
@@ -101,13 +95,9 @@ https://www.thoughtco.com/thmb/VlZOfDfOEtxaKL_1KD_VWzi3HeU=/1500x1000/filters:no
 `r knitr::include_url("https://www.youtube.com/embed/URL")`
 
 <details>
+<summary>Meeting chat log</summary>
 
-<summary>
-
-Meeting chat log
-
-</summary>
-
-    LOG
-
+```
+LOG
+```
 </details>
