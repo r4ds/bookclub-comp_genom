@@ -12,5 +12,9 @@ URL: https://r4ds.github.io/bookclub-comp_genom, https://github.com/r4ds/bookclu
 Depends:
     R (>= 3.1.0)
 Imports: 
+    BiocManager,
     bookdown,
+    compGenomRData,
     rmarkdown
+Remotes:
+    compgenomr/compGenomRData
