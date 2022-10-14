@@ -1,13 +1,98 @@
-# Introduction to R for Genomic Data Analysis
+# Introduction to R for Genomic Data Analysis (part 1)
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Understand the general workflow of genomic analysis in R
+- Comprehend differences between data structures and data types
+- **Download and install R, RStudio, Bioconductor, compGenomRData**
+- Reading and writing tables
 
-## SLIDE 1
+## Genomic data analysis (a high level view)-- in R!
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+![A high level overview of genomic analysis. Source: https://www.intechopen.com/chapters/50574](images/workflow.png)
+
+![Analyses that can be performed in R. Source: https://image.slideserve.com/835537/bioconductor-l.jpg](images/bioconductor.jpg)
+
+## Getting started with R and Bioconductor
+
+Install R and RStudio if you haven't done so already (see resources)
+
+Install Bioconductor 
+```{r eval=FALSE} 
+install.packages("BiocManager")
+```
+https://www.bioconductor.org/install/
+
+Installing Bioconductor packages
+```{r eval = FALSE}
+BiocManager::install("xyzpackage")
+```
+
+Installing packages from Github
+```{r eval=FALSE}
+library(devtools)
+devtools::install_github("compgenomr/compGenomRData")
+```
+
+## Data stuctures and data types
+
+Data Structures
+
+![Analyses that can be performed in R. Source: https://www.researchgate.net/profile/Aoife-Gowen/publication/262672589/figure/fig2/AS:296394733703176@1447677419862/Common-data-structures-in-R.png](images/Common-data-structures-in-R.png)
+Data types
+![Types of data. Source: https://sydney-informatics-hub.github.io/lessonbmc/02-BMC_R_Day1_B/index.html](images/Rvariablesdata.jpg)
+
+## Reading and writing data
+First download the "compGenomRData" package from Github if you haven't done so yet.
+We are using this as a companion for the course!
+
+```{r eval=FALSE}
+devtools::install_github("compgenomr/compGenomRData")
+```
+
+Read files in base R
+```{r}
+enhancerFilePath=system.file("extdata",
+                "subset.enhancers.hg18.bed",
+                package="compGenomRData")
+
+# read enhancer marker BED file
+enh.df <- read.table(enhancerFilePath, header = FALSE) 
+
+# check first lines to see how the data looks like
+head(enh.df)
+```
+the key here is 
+```{r eval = FALSE}
+read.table()
+```
+
+Reading large tables with "readr".
+```{r}
+library(readr)
+df.f2=read_table(enhancerFilePath, col_names = FALSE)
+df.f2
+```
+
+Readr is part of the tidyverse (tidyverse is life).
+
+Writing data w/ "write.table"
+```{r}
+write.table(enh.df,file="enh.txt",quote=FALSE,
+            row.names=FALSE,col.names=FALSE,sep="\t")
+```
+
+The type of file it is save as depends on the sep (^ saved a tab separated file or .tsv)
+
+## Resources
+
+- R and R Studio
+  - [R](https://www.r-project.org/)
+  - [R Studio](https://www.rstudio.com/products/rstudio/download/)
+  
+- [Bioconductor](https://www.bioconductor.org/)
+- [Tidyverse](https://www.tidyverse.org/)
+
 
 ## Meeting Videos
 
