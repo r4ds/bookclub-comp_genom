@@ -88,7 +88,7 @@ df.f2
 Readr is part of the tidyverse (tidyverse is life).
 
 Writing data w/ `write.table`
-```{r}
+```{r eval = FALSE}
 write.table(enh.df,file="enh.txt",quote=FALSE,
             row.names=FALSE,col.names=FALSE,sep="\t")
 ```
