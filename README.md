@@ -1,9 +1,5 @@
 # R4DS Computational Genomics with R Book Club
 
-UPDATE THE MEETING TIME INFO BELOW AND DELETE THIS SENTENCE.
-
-ALSO ADD PLACEHOLDERS FOR ALL CHAPTERS BY COPYING 01.Rmd (IDEALLY ALSO UPDATE TITLES WITHIN THE FILES), THEN DELETE THIS SENTENCE.
-
 Welcome to the R4DS Computational Genomics with R Book Club!
 
 We are working together to read [_Computational Genomics with R_](https://compgenomr.github.io/book/) by Altuna Akalin (Chapman & Hall, copyright 2021, [9781498781855](https://www.routledge.com/Computational-Genomics-with-R/Akalin/p/book/9781498781855)).
