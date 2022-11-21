@@ -15,10 +15,14 @@ Imports:
     BiocManager,
     bookdown,
     compGenomRData,
+    cluster,
+    fastICA,
     matrixStats,
     mosaic,
+    pheatmap
     qvalue,
     rmarkdown,
+    Rtsne,
     tidyverse
 Remotes:
     compgenomr/compGenomRData
