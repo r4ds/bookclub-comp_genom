@@ -15,6 +15,9 @@ Imports:
     BiocManager,
     bookdown,
     compGenomRData,
+    matrixStats,
+    mosaic,
+    qvalue,
     rmarkdown,
     tidyverse
 Remotes:
