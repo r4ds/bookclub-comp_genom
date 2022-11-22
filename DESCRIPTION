@@ -14,11 +14,17 @@ Depends:
 Imports: 
     BiocManager,
     bookdown,
+    caret,
     compGenomRData,
+    cluster,
+    fastICA,
     matrixStats,
     mosaic,
+    pheatmap,
     qvalue,
+    RANN,
     rmarkdown,
+    Rtsne,
     tidyverse
 Remotes:
     compgenomr/compGenomRData
