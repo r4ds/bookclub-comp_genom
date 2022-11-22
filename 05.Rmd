@@ -31,7 +31,7 @@ dim(gexp)
 patient=readRDS(fileLGGann)
 head(patient)
 
-dim(paitent)
+dim(patient)
 
 #caret for pre-processing
 
