@@ -19,7 +19,7 @@ Imports:
     fastICA,
     matrixStats,
     mosaic,
-    pheatmap
+    pheatmap,
     qvalue,
     rmarkdown,
     Rtsne,
