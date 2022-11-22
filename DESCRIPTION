@@ -22,6 +22,7 @@ Imports:
     mosaic,
     pheatmap,
     qvalue,
+    RANN,
     rmarkdown,
     Rtsne,
     tidyverse
