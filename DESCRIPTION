@@ -14,6 +14,7 @@ Depends:
 Imports: 
     BiocManager,
     bookdown,
+    caret,
     compGenomRData,
     cluster,
     fastICA,
