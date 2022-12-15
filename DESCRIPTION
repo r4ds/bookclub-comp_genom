@@ -25,6 +25,12 @@ Imports:
     RANN,
     rmarkdown,
     Rtsne,
-    tidyverse
+    tidyverse,
+    pROC,
+    DALEX,
+    glmnet,
+    xgboost,
+    kernlab,
+    nnet
 Remotes:
     compgenomr/compGenomRData
