@@ -17,20 +17,21 @@ Imports:
     caret,
     compGenomRData,
     cluster,
+    DALEX,
     fastICA,
+    glmnet,
+    kernlab,
     matrixStats,
     mosaic,
+    nnet,
     pheatmap,
+    pROC,
     qvalue,
+    ranger,
     RANN,
     rmarkdown,
     Rtsne,
     tidyverse,
-    pROC,
-    DALEX,
-    glmnet,
-    xgboost,
-    kernlab,
-    nnet
+    xgboost
 Remotes:
     compgenomr/compGenomRData
