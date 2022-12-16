@@ -14,7 +14,8 @@
 
 ![Supervised machine learning. Source: https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781788629355/1/ch01lvl1sec12/types-of-learning](images/supervised.png)
 
-```{r, warning=FALSE}
+```{r,warning = FALSE}
+
 # get file paths
 fileLGGexp=system.file("extdata",
                       "LGGrnaseq.rds",
@@ -24,6 +25,7 @@ fileLGGann=system.file("extdata",
                       package="compGenomRData")
 # gene expression values
 gexp=readRDS(fileLGGexp)
+
 head(gexp[,1:5])
 
 dim(gexp)
@@ -34,15 +36,16 @@ head(patient)
 
 dim(patient)
 
-#caret for pre-processing
-
-library(caret)
 ```
 
 ## Data pre-processing
 
 **Transform** --> filter/scale --> handle missing values 
-```{r}
+```{r, message = FALSE}
+
+#caret for pre-processing
+
+library(caret)
 
 #some of the un-transformed data
 boxplot(gexp[,1:50],outline=FALSE,col="cornflowerblue")
@@ -88,13 +91,13 @@ tgexp=tgexp[,topPreds]
 
 What about centering and scaling the data?
 ```{r}
-processCenter=preProcess(tgexp, method = c("center"))
+processCenter=caret::preProcess(tgexp, method = c("center"))
 tgexp=predict(processCenter,tgexp)
 ```
 
 Filter out highly correlated variables so the model is fitted faster (optional depending on the type of analysis)
 ```{r}
-corrFilt=preProcess(tgexp, method = "corr",cutoff = 0.9)
+corrFilt=caret::preProcess(tgexp, method = "corr",cutoff = 0.9)
 tgexp=predict(corrFilt,tgexp)
 ```
 
@@ -106,15 +109,17 @@ Options for dealing with missing values ... it depends.
 -Discard samples and/or predictors with missing values
 -Impute missing values via algorithm
 
-```{r}
+```{r, warning = FALSE}
+
 #add an NA to the dataset
 missing_tgexp=tgexp
 missing_tgexp[1,1]=NA
 
 #remove from data set
-gexpnoNA=missing_tgexp[ , colSums(is.na(missing_tgexp)) == 0]
+gexpnoNA=missing_tgexp[,colSums(is.na(missing_tgexp)) == 0]
 
 #impute missing value w/ caret::preProcess
+library(caret)
 mImpute=preProcess(missing_tgexp,method="medianImpute")
 imputedGexp=predict(mImpute,missing_tgexp)
 
@@ -298,7 +303,7 @@ lines(loess.smooth(x=1:12,1-knn_fit$results[,2],degree=2),
 ```
 
 Another strategy for model tuning: Permutation of variables in the test phase -- which variables are important?
-```{r}
+```{r, eval = FALSE}
 library(DALEX)
 set.seed(102)
 # do permutation drop-out
@@ -308,11 +313,11 @@ explainer_knn<- DALEX::explain(knn_fit,
                                y = as.numeric(training[,1]))
 
 viknn=feature_importance(explainer_knn,n_sample=50,type="difference")
-plot(viknn)
+plot(viknn[1:8,])
 ```
 
 
-## Supervised algorithm ##1: Random forest
+## Supervised algorithm #1: Random forest
 
 "A (random) forest filled with decision trees"
 
@@ -344,7 +349,7 @@ plot(varImp(rfFit),top=10)
 
 ## Supervised Algorithm #2: Logistic Regression and Regularization
 
-```{r}
+```{r, warning = FALSE}
 # fit logistic regression model
 # method and family defines the type of regression
 # in this case these arguments mean that we are doing logistic
@@ -376,7 +381,7 @@ confusionMatrix(testing[,1],class.res)$overall[1]
 ```
 
 What if we didn't train the model?
-```{r}
+```{r, warning = FALSE}
 lrFit2 = train(subtype ~ .,  
                 data=training, 
                 # no model tuning with sampling
@@ -456,6 +461,7 @@ gbFit <- train(subtype~., data = training,
                                        
 
 # best parameters by cross-validation accuracy
+gbFit
 gbFit$bestTune
 ```
  
@@ -477,6 +483,8 @@ svmFit <- train(subtype~., data = training,
                  trControl=trctrl,
                 tuneGrid=data.frame(C=c(0.25,0.5,1),
                                     sigma=1))
+svmFit
+svmFit$bestTune
 ```
  
  Neural Networks
@@ -499,6 +507,10 @@ nnetFit <- train(subtype~., data = training,
                  # this is maximum number of weights
                  # needed for the nnet method
                  MaxNWts=2000) 
+
+nnetFit
+nnetFit$bestTune
+
 ```
  
  Ensemble Models
@@ -556,7 +568,7 @@ set.seed(18)
 
 par(mfrow=c(1,2))
 
-# we are not going to do any cross-validatin
+# we are not going to do any cross-validation
 # and rely on OOB error
 trctrl <- trainControl(method = "none")
 

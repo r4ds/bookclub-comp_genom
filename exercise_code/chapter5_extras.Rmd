@@ -1,0 +1,558 @@
+---
+title: "chapter 5 extras"
+author: "fg"
+date: "2022-12-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+# options(timeout=300)
+# devtools::install_github("compgenomr/compGenomRData")
+library(compGenomRData)
+library(tidyverse)
+```
+
+
+
+```{r}
+# get file paths
+fileLGGexp=system.file("extdata",
+                      "LGGrnaseq.rds",
+                      package="compGenomRData")
+fileLGGann=system.file("extdata",
+                      "patient2LGGsubtypes.rds",
+                      package="compGenomRData")
+# gene expression values
+gexp=readRDS(fileLGGexp)
+head(gexp[,1:5])
+```
+
+```{r}
+# patient annotation
+patient=readRDS(fileLGGann)
+head(patient)
+```
+```{r}
+patient%>%count(subtype)
+```
+```{r}
+patient_df <- patient%>%
+  rownames_to_column(var = "patient")
+patient_df%>%head
+```
+
+```{r}
+# transpose the data set
+tgexp <- t(gexp)
+```
+
+
+```{r}
+# choose a specific cutoff
+topPreds <- tgexp %>%
+  apply(2,sd) %>%
+  order(decreasing = TRUE)
+
+topPreds<- topPreds[1:1000] 
+tgexp=tgexp[,topPreds]
+
+tgexp%>%class
+
+data <- tgexp %>%
+  as.data.frame.matrix() %>%
+  rownames_to_column(var="patient") %>%
+  left_join(patient_df,by="patient")
+
+data%>%head
+```
+
+
+
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+library(tidymodels)
+```
+
+```{r}
+set.seed(1234)
+split <- initial_split(data, strata = subtype,prop = 0.7)
+training <- training(split)
+testing <- testing(split)
+```
+
+# Preprocessing
+
+```{r}
+rec <- recipe(subtype~.,data = training) %>%
+  update_role(patient,new_role = "id") %>%
+  step_nzv(all_numeric_predictors()) %>%
+  step_normalize(all_numeric_predictors()) %>%
+  step_corr(all_numeric_predictors(),threshold = 0.9)
+```
+
+```{r}
+?step_nzv
+```
+
+
+
+```{r}
+preproc_df <- rec %>%prep()%>%juice()
+preproc_df%>%dim
+```
+
+
+
+KNN modeling
+
+
+
+set the model specification:
+```{r}
+nearest_neighbor_kknn_spec <-
+  nearest_neighbor(neighbors = 5,
+                   weight_func = "triangular") %>%
+  set_engine('kknn') %>%
+  set_mode('classification')
+```
+
+
+
+```{r}
+fit <- nearest_neighbor_kknn_spec %>%
+ fit(subtype ~ ., data = training)
+
+
+
+fit %>%
+  pluck("fit") %>%
+  summary()
+```
+
+```{r}
+prediction <- 
+  predict(fit, training) %>% 
+  bind_cols(predict(fit, training, type = "prob")) %>% 
+  bind_cols(training %>% select(subtype))
+
+prediction
+```
+```{r}
+prediction %>%
+ roc_auc(truth = subtype, .pred_CIMP)
+```
+```{r}
+prediction %>%
+  accuracy(truth = subtype, .pred_class)
+```
+
+
+
+Cross validation:
+```{r}
+set.seed(456)
+training%>%dim
+folds <- vfold_cv(training, v = 5)
+folds$splits
+```
+
+
+```{r eval=FALSE}
+simple_wf <- 
+  workflow() %>%
+  add_model(nearest_neighbor_kknn_spec) %>%
+  add_formula(subtype ~ .)
+
+set.seed(456)
+simple_wf_fit <- 
+  simple_wf %>% 
+  fit_resamples(folds)
+```
+
+
+Workflow:
+```{r}
+wf <- workflow() %>%
+  add_recipe(rec) %>%
+  add_model(nearest_neighbor_kknn_spec)
+```
+
+
+
+```{r}
+doParallel::registerDoParallel()
+control <- control_resamples(save_pred = TRUE,save_workflow = TRUE)
+set.seed(1111)
+model_res <- 
+  wf %>% 
+  fit_resamples(resamples = folds, 
+                control = control)
+```
+
+
+Metrics:
+```{r}
+model_res %>%
+collect_metrics()
+```
+
+
+```{r}
+model_res%>%
+  collect_predictions()
+```
+
+
+```{r}
+model_res %>%
+  conf_mat_resampled(tidy = FALSE)
+```
+
+
+```{r}
+model_res %>%
+  conf_mat_resampled(tidy = FALSE) %>%
+  autoplot(type = "mosaic")
+```
+
+
+```{r}
+model_res%>%
+  collect_predictions() %>%
+  #filter(id=="Fold1") %>%
+  roc_curve(subtype,.pred_CIMP) %>%
+  ggplot(aes(x=1-specificity,y=sensitivity))+
+  geom_path() +
+  geom_abline(lty = 3) +
+  coord_equal() +
+  theme_bw()
+```
+
+Tuning:
+
+extra source: https://uo-datasci-specialization.github.io/c4-ml-fall-2020/slides/w6p1-knn/w6p1.pdf
+
+```{r}
+kknn_spec_tuning <-
+  nearest_neighbor(neighbors = tune(), 
+                   weight_func = tune(), 
+                   dist_power = tune()) %>%
+  set_engine('kknn') %>%
+  set_mode('classification')
+
+
+wf_tuning <- workflow() %>%
+  add_recipe(rec) %>%
+  add_model(kknn_spec_tuning)
+
+grid <- grid_regular(neighbors(),
+                     weight_func(),
+                     dist_power())
+
+
+doParallel::registerDoParallel()
+set.seed(2222)
+tuning_res <- wf_tuning %>%
+  tune_grid(resamples=folds,
+            grid=grid)
+```
+
+
+```{r}
+show_best(tuning_res,metric="accuracy")
+```
+
+```{r}
+show_best(tuning_res,metric="accuracy") %>%
+  ggplot(aes(neighbors,mean))+
+  geom_point() +
+  geom_line()
+```
+
+```{r}
+show_best(tuning_res,metric="accuracy") %>%
+  arrange(std_err)
+```
+```{r}
+select_best(tuning_res,metric="accuracy")
+```
+```{r}
+final <- wf_tuning %>%
+  finalize_workflow(
+    select_by_pct_loss(tuning_res, desc(neighbors),metric='accuracy')
+  ) %>%
+  last_fit(split)
+
+
+final
+```
+
+```{r}
+collect_metrics(final)
+```
+
+```{r}
+collect_predictions(final) %>%
+  roc_curve(subtype,.pred_CIMP) %>%
+  ggplot(aes(x=1-specificity,y=sensitivity))+
+  geom_path() +
+  geom_abline(lty = 3) +
+  coord_equal() +
+  theme_bw()
+```
+
+
+Best k:
+
+```{r}
+kknn_spec_tuning <-
+  nearest_neighbor(neighbors = tune(), 
+                   weight_func = tune(), 
+                   dist_power = tune()) %>%
+  set_engine('kknn') %>%
+  set_mode('classification')
+
+
+wf_tuning <- workflow() %>%
+  add_recipe(rec) %>%
+  add_model(kknn_spec_tuning)
+
+
+wf_tuning_set <-
+  wf_tuning %>%
+  extract_parameter_set_dials() %>%
+  update(neighbors = neighbors(c(1, 50)))
+
+# grid_max_entropy
+set.seed(7014)
+wf_grid <-
+  wf_tuning_set %>%
+  grid_max_entropy(size = 10)
+
+wf_grid_search <-
+  tune_grid(
+    wf_tuning,
+    resamples = folds,
+    grid = wf_grid
+  )
+```
+
+
+
+```{r}
+show_best(wf_grid_search,metric="accuracy") %>%
+  ggplot(aes(neighbors,1-mean))+
+  geom_jitter()+
+  geom_smooth()
+```
+```{r}
+wf_grid_search %>%
+  autoplot() +
+  geom_smooth(linewidth=0.5,
+              color="grey",
+              se=FALSE) +
+  labs(title="\n\n")+
+  theme(legend.position = c(0.5,1),
+        legend.direction = "horizontal",
+        legend.title = element_text(size=8),
+        legend.text = element_text(size=8))
+```
+
+
+
+
+```{r}
+wf_grid_search%>%collect_metrics()
+```
+
+
+
+```{r}
+doParallel::registerDoParallel()
+control <- control_resamples(save_pred = TRUE,save_workflow = TRUE)
+set.seed(3333)
+wf_grid_search2 <-
+  tune_grid(
+    wf_tuning,
+    resamples = folds,
+    grid = wf_grid,
+    control = control)
+```
+
+```{r}
+wf_grid_search2%>%
+  collect_predictions()%>%
+  roc_curve(subtype,.pred_CIMP) %>%
+  ggplot(aes(x=1-specificity,y=sensitivity))+
+  geom_path() +
+  geom_abline(lty = 3) +
+  coord_equal() +
+  theme_bw()
+```
+
+```{r}
+# Select best tuning parameters
+knn_best <- wf_grid_search2 %>%
+select_best(metric = "roc_auc")
+# Finalize your model using the best tuning parameters
+knn_mod_final <- kknn_spec_tuning %>%
+finalize_model(knn_best) 
+```
+
+```{r}
+knn_final_res <- last_fit(
+knn_mod_final,
+preprocessor = rec,
+split = split)
+```
+
+```{r}
+#Collect metrics
+knn_final_res %>%
+collect_metrics()
+```
+```{r}
+knn_final_res %>%
+collect_predictions() %>%
+conf_mat(truth = subtype, estimate = .pred_class)
+```
+
+
+Overfitting
+
+```{r}
+rec_pca <- rec %>%
+  step_pca(all_predictors(),num_comp = 5)
+```
+
+
+```{r}
+rec_pca%>%
+  prep()%>%
+  juice() %>%
+  ggplot(aes(x=PC1,y=PC2,color=subtype,shape=subtype))+
+  geom_point()
+```
+
+```{r}
+
+```
+
+
+
+
+########################################################
+########################################################
+
+
+
+
+
+
+# Model explanation
+
+
+
+```{r}
+library(vip)
+final %>%
+extract_fit_parsnip() 
+
+wf_trained <-final%>%
+  extract_workflow()
+```
+```{r}
+wf_trained %>%
+  extract_fit_engine() 
+```
+
+
+```{r}
+wf_trained %>%  extract_parameter_dials()
+  extract_fit_parsnip() 
+```
+
+
+```{r}
+library(DALEX)
+#knn model
+explainer_knn <- DALEX::explain(wf_trained,
+                        data = training%>%select(-subtype),
+                        y = training$subtype, 
+                        label = "KNN")
+```
+
+
+
+
+
+```{r}
+
+# library(lime)
+library(DALEXtra)
+set.seed(1807)
+knn_explainer <- 
+  explain_tidymodels(
+    wf_trained, 
+    data = training%>%select(-subtype),
+    y = training$subtype, 
+    label = "KNN",
+    verbose = FALSE
+  ) 
+  
+knn_explainer %>% 
+  model_diagnostics() %>% 
+  plot(variable = "y", yvariable = "y_hat", smooth = FALSE)
+# model_parts() 
+```
+
+
+
+some resources:
+- https://bookdown.org/gaetan_lovey/data_analytics/dalex.html
+- https://ema.drwhy.ai/breakDown.html
+- https://search.r-project.org/CRAN/refmans/DALEX/html/predict_parts.html
+
+```{r}
+new_obs <- training[120,]
+
+set.seed(1801)
+break_down <- predict_parts(
+    explainer = knn_explainer, 
+    new_observation = new_obs, 
+    type = "break_down")
+```
+
+```{r}
+plot(break_down, max_features = 5) 
+```
+
+
+
+
+
+
+
+????
+
+```{r}
+library(forcats)
+knn_explainer %>%
+  group_by(variable) %>%
+  mutate(mean_val = mean(contribution)) %>%
+  ungroup() %>%
+  mutate(variable = fct_reorder(variable, abs(mean_val))) %>%
+  ggplot(aes(contribution, variable, fill = mean_val > 0)) +
+  geom_col(data = ~distinct(., variable, mean_val), 
+           aes(mean_val, variable), 
+           alpha = 0.5) +
+  geom_boxplot(width = 0.5) +
+  theme(legend.position = "none") +
+  scale_fill_viridis_d() +
+  labs(y = NULL)
+```
+
