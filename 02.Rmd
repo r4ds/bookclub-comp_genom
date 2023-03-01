@@ -194,11 +194,39 @@ In the tidyverse: `purrr` --> specifically `map`
 
 ### Cohort 1
 
+`r knitr::include_url("https://www.youtube.com/embed/FwmcE-avReA")`
+
+<details>
+<summary>Meeting chat log</summary>
+```
+00:04:37	Daphne Wang:	Hi, is there a way to dial into the meeting? I am having issues connecting my audio to the meeting...
+00:04:58	Allison Smither:	there should be phone audio
+00:05:25	Daphne Wang:	Thank you!
+00:05:25	Allison Smither:	+1 346 248 7799 (Houston)
++1 719 359 4580
++1 253 215 8782 (Tacoma)
++1 669 444 9171
++1 669 900 6833 (San Jose)
++1 929 436 2866 (New York)
++1 301 715 8592 (Washington DC)
++1 309 205 3325
++1 312 626 6799 (Chicago)
++1 386 347 5053
++1 564 217 2000
++1 646 931 3860
+00:45:05	Daphne Wang:	enhancerFilePath=system.file("extdata",
+                "subset.enhancers.hg18.bed",
+                package="compGenomRData")
+01:01:46	Daphne Wang:	I have to head off! Thank you!
+```
+</details>
+
+### Cohort 2
+
 `r knitr::include_url("https://www.youtube.com/embed/URL")`
 
 <details>
-<summary> Meeting chat log </summary>
-
+<summary>Meeting chat log</summary>
 ```
 LOG
 ```

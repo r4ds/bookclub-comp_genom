@@ -603,11 +603,26 @@ abline(h=0,col="red4",lty=2)
 
 ### Cohort 1
 
+`r knitr::include_url("https://www.youtube.com/embed/1K-AxVl4sIw")`
+
+`r knitr::include_url("https://www.youtube.com/embed/HpVfRDtcuSg")`
+
+`r knitr::include_url("https://www.youtube.com/embed/MDKRcnkVGWk")`
+
+<details>
+<summary>Meeting chat log</summary>
+```
+00:00:50	Federica Gazzelloni:	Hello!!
+00:47:49	Federica Gazzelloni:	https://mlr3book.mlr-org.com/
+```
+</details>
+
+### Cohort 2
+
 `r knitr::include_url("https://www.youtube.com/embed/URL")`
 
 <details>
-<summary> Meeting chat log </summary>
-
+<summary>Meeting chat log</summary>
 ```
 LOG
 ```
