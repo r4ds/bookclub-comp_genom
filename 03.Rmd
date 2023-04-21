@@ -454,11 +454,16 @@ summary(mod3)
 
 ### Cohort 1
 
+`r knitr::include_url("https://www.youtube.com/embed/4DleINdy7cw")`
+
+`r knitr::include_url("https://www.youtube.com/embed/i_-9IYOJCYg")`
+
+### Cohort 2
+
 `r knitr::include_url("https://www.youtube.com/embed/URL")`
 
 <details>
-<summary> Meeting chat log </summary>
-
+<summary>Meeting chat log</summary>
 ```
 LOG
 ```

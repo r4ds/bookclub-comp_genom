@@ -228,12 +228,36 @@ legend("bottomleft", # create the legend for the Leukemia types
 
 ### Cohort 1
 
+`r knitr::include_url("https://www.youtube.com/embed/DZ12ZwDQkLs")`
+
+<details>
+<summary> Meeting chat log </summary>
+```
+00:02:38	Allison Smither:	need to switch to phone audio
+00:07:37	Allison Smither:	https://compgenomr.github.io/book/
+00:22:52	Allison Smither:	https://www.youtube.com/c/joshstarmer
+00:26:21	Allison Smither:	http://genomicsclass.github.io/book/
+```
+</details>
+
+`r knitr::include_url("https://www.youtube.com/embed/SwIp_r-mnZ0")`
+
+<details>
+<summary>Meeting chat log</summary>
+```
+00:13:56	Allison Smither:	https://www.youtube.com/watch?v=FgakZw6K1QQ
+00:43:17	Federica Gazzelloni:	https://www.tmwr.org/dimensionality.html
+00:44:39	Federica Gazzelloni:	https://www.tmwr.org/dimensionality.html#feature-extraction-techniques
+```
+</details>
+
+### Cohort 2
+
 `r knitr::include_url("https://www.youtube.com/embed/URL")`
 
 <details>
-
 <summary>Meeting chat log</summary>
-
-    LOG
-
+```
+LOG
+```
 </details>

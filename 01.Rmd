@@ -92,11 +92,21 @@ https://www.thoughtco.com/thmb/VlZOfDfOEtxaKL_1KD_VWzi3HeU=/1500x1000/filters:no
 
 ### Cohort 1
 
+`r knitr::include_url("https://www.youtube.com/embed/Cq9lEV0ZlR0")`
+
+<details>
+<summary>Meeting chat log</summary>
+```
+00:44:50	Anna-Leigh Brown:	https://www.proteinatlas.org/
+```
+</details>
+
+### Cohort 2
+
 `r knitr::include_url("https://www.youtube.com/embed/URL")`
 
 <details>
 <summary>Meeting chat log</summary>
-
 ```
 LOG
 ```
