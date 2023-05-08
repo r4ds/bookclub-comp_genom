@@ -40,7 +40,7 @@ Imports:
     rtracklayer,
     Rqc,
     fastqcr,
-    Quasr
+    QuasR
 
 Remotes:
     compgenomr/compGenomRData
