@@ -41,6 +41,5 @@ Imports:
     Rqc,
     fastqcr,
     QuasR
-
 Remotes:
     compgenomr/compGenomRData
