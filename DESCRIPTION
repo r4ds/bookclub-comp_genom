@@ -37,6 +37,9 @@ Imports:
     plyranges,
     Rsamtools,
     GenomicAlignments,
-    rtracklayer
+    rtracklayer,
+    Rqc,
+    fastqcr,
+    QuasR
 Remotes:
     compgenomr/compGenomRData
