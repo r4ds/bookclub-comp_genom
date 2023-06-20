@@ -245,11 +245,13 @@ plot(myViews[[1]][[5]],type="l")
 
 ### Cohort 2
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/ec1mD6jmwwA")`
 
 <details>
 <summary> Meeting chat log </summary>
 ```
-LOG
+00:01:00	Keith Baxelbaum:	I can't hear you
+00:01:06	Allison Smither:	ah let me check audio
+00:01:12	Allison Smither:	I can hear you now
 ```
 </details>
