@@ -1,14 +1,14 @@
-# R4DS Computational Genomics with R Book Club
+# DSLC Computational Genomics with R Book Club
 
-Welcome to the R4DS Computational Genomics with R Book Club!
+Welcome to the DSLC Computational Genomics with R Book Club!
 
 We are working together to read [_Computational Genomics with R_](https://compgenomr.github.io/book/) by Altuna Akalin (Chapman & Hall, copyright 2021, [9781498781855](https://www.routledge.com/Computational-Genomics-with-R/Akalin/p/book/9781498781855)).
-Join the [#book_club-comp_genom](https://rfordatascience.slack.com/archives/C040F26TNR5) channel on the [R4DS Slack](https://r4ds.io/join) to participate.
-As we read, we are producing [notes about the book](https://r4ds.io/comp_genom).
+Join the [#book_club-comp_genom](https://dslcio.slack.com/archives/C040F26TNR5) channel on the [DSLC Slack](https://dslc.io/join) to participate.
+As we read, we are producing [notes about the book](https://dslc.io/comp_genom).
 
 ## Meeting Schedule
 
-If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-comp_genom](https://rfordatascience.slack.com/archives/C040F26TNR5) channel on Slack)!
+If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-comp_genom](https://dslcio.slack.com/archives/C040F26TNR5) channel on Slack)!
 
 - Cohort 1 (started 2022-10-07, ended 2022-12-16): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGjAvuW2kC0kKP_oCWK2omFt)
 - Cohort 2 (started 2023-03-27, ended 2023-05-08): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGiJMkQo_HgHVrzVK4W6sA9d)
@@ -40,4 +40,4 @@ Do these steps each time you present another chapter:
 10. When your PR has been accepted ("merged"), `usethis::pr_finish()` to close out your branch and prepare your local repository for future work.
 11. Now that your local copy is up-to-date with the main repo, you need to update your remote fork. Run `gert::git_push("origin")` or click the `Push` button on the `Git` tab of Rstudio.
 
-When your PR is checked into the main branch, the bookdown site will rebuild, adding your slides to [this site](https://r4ds.io/comp_genom).
+When your PR is checked into the main branch, the bookdown site will rebuild, adding your slides to [this site](https://dslc.io/comp_genom).
